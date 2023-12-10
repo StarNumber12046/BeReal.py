@@ -52,8 +52,9 @@ class Moment():
         self.region:str = raw["region"]
 
 class Feed():
-    def __init__(self, raw):
+    def __init__(self, raw,):
         self.friends_posts = [FriendPost(post) for post in raw["friendsPosts"]]
+        self.user_posts = [FriendPost(raw['userPosts'])]
 
 class Comment():
     def __init__(self, raw):
@@ -65,7 +66,7 @@ class Comment():
 class FriendPost():
     def __init__(self,raw:dict):
         self.posts = [Post(post) for post in raw["posts"]]
-        self.moment = Moment(raw["moment"])
+        self.moment = Moment(raw["moment"]) if "moment" in raw.keys() else Moment({"id": raw['momentId'], "region": ""})
         self.region:str = raw["region"]
         self.moment_id:str = raw["momentId"]
         self.caption = raw["caption"] if "caption" in raw.keys() else ""

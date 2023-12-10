@@ -82,15 +82,14 @@ def refresh_session(refresh_token: str):
     res = requests.post(
         "https://auth.bereal.team/token?grant_type=refresh_token",
         params={"grant_type": "refresh_token"},
-        data={
-            "refresh_token": refresh_token,
+        json={
             "grant_type": "refresh_token",
             "client_id": "ios",
             "client_secret": "962D357B-B134-4AB6-8F53-BEA2B7255420",
+            "refresh_token": refresh_token,
         },
         headers=BEREAL_HEADERS,
     )
-
-
+    
     resp = res.json()
-    return (resp["id_token"], resp["refresh_token"])
+    return (resp["access_token"], resp["refresh_token"])

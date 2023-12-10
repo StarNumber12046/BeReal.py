@@ -15,7 +15,7 @@ for friend in me.friends:
     print("Friend: %s" % friend.username)
 
 feed = client.get_feed()
-for post in feed.friends_posts:
+for post in feed.friends_posts + feed.user_posts:
     print(f"Post by {post.user.username}")
     for p in post.posts:
         print("Post id:",p.id)
@@ -25,5 +25,8 @@ for post in feed.friends_posts:
         print("REAL MOJIS")
         for moji in p.real_mojis:
             print(f"{moji.user.username} : {moji.emoji}")
-        print("     -----     ")
+        print("COMMENTS")
+        for commment in p.comments:
+            print(f"{commment.author.username} : {commment.content}")
+        print("-----     -----     -----")
     print("-----------------")
