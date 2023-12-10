@@ -60,3 +60,8 @@ for friend in me.friends:
     print(f"Friend: {friend.username}")
 ```
 
+## Pre-made examples
+You can use my examples. Do it in this order: 
+1. Example/auth.py (login)
+2. Example/example.py (actual data)
+3. (If the token expires) Example/refresh_token.py
