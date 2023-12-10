@@ -1,6 +1,6 @@
 import requests
 import random
-from . import auth, profile, feed
+from . import auth, profile, feed, fof
 import json
 
 
@@ -54,3 +54,7 @@ class BeReal():
     def get_feed(self):
         my_feed = feed.get_feed(self.id_token)
         return my_feed
+    
+    def get_fof(self):
+        fof_feed = fof.get_fof_feed(self.id_token)
+        return fof_feed

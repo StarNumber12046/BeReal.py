@@ -7,7 +7,8 @@ class Person():
     def __init__(self, raw):
         self.id:str = raw["id"]
         self.username:str = raw["username"]
-        
+        # Add a Person as relationship->commonFriends[]
+        self.mutuals:list[Person] = [Person(friend) for friend in raw["relationship"]["commonFriends"]] if "relationship" in raw else []
         profile_pic_obj = raw.get("profile_picture", None)
         if profile_pic_obj is not None:
             self.profile_picture:str = profile_pic_obj.get("url", None)
@@ -63,16 +64,6 @@ class Comment():
         self.posted_at = convert_bereal_date(raw["postedAt"])
         self.author = Person(raw["user"])
 
-class FriendPost():
-    def __init__(self,raw:dict):
-        self.posts = [Post(post) for post in raw["posts"]]
-        self.moment = Moment(raw["moment"]) if "moment" in raw.keys() else Moment({"id": raw['momentId'], "region": ""})
-        self.region:str = raw["region"]
-        self.moment_id:str = raw["momentId"]
-        self.caption = raw["caption"] if "caption" in raw.keys() else ""
-        self.user = Person(raw["user"])
-        
-
 class RealMoji():
     def __init__(self, raw):
         self.emoji:str = raw["emoji"]
@@ -81,3 +72,36 @@ class RealMoji():
         self.user = Person(raw["user"])
         self.media = Image(raw["media"])
         self.type  = raw["type"]
+
+class FriendPost():
+    def __init__(self,raw:dict):
+        self.posts = [Post(post) for post in raw["posts"]]
+        self.moment = Moment(raw["moment"]) if "moment" in raw.keys() else Moment({"id": raw['momentId'], "region": ""})
+        self.region:str = raw["region"]
+        self.moment_id:str = raw["momentId"]
+        self.caption = raw["caption"] if "caption" in raw.keys() else ""
+        self.user = Person(raw["user"])
+
+class FOFRealMoji():
+    def __init__(self, raw):
+        self.id:str = raw["id"]
+        self.emoji:str = raw["emoji"]
+        self.media = Image(raw["media"])
+        self.user = Person(raw["user"])
+        self.is_instant:bool = raw["isInstant"]
+        self.posted_at = convert_bereal_date(raw["postedAt"])
+
+class FOFPost():
+    def __init__(self, raw):
+        self.id:str = raw["id"]
+        self.user = Person(raw["user"])
+        self.moment = Moment(raw["moment"])
+        self.primary_image = Image(raw["primary"])
+        self.secondary_image = Image(raw["secondary"])
+        self.real_mojis = [FOFRealMoji(moji) for moji in raw["realmojis"]["sample"]]
+        
+        
+
+class FOFFeed():
+    def __init__(self, raw) -> None:
+        self.posts = [FOFPost(post) for post in raw["data"]]
