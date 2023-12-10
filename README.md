@@ -10,10 +10,10 @@
 
 ``` sh
 # Windows:
-pip install git+https://gitub.com/StarNumber12046/BeReal.py
+pip install git+https://github.com/StarNumber12046/BeReal.py
 
 # Macos/Linux:
-pip3 install git+https://gitub.com/StarNumber12046/BeReal.py
+pip3 install git+https://github.com/StarNumber12046/BeReal.py
 ```
 
 ## Features
@@ -44,7 +44,7 @@ client = BeReal.client("+12345678901")
 # Send and verify OTP
 client.send_code()
 otp = input("You should have received an authentication code. Please check your phone and enter it below.")
-
+client.verify_code(otp)
 # Initialize the client with BeReal-provided tokens
 client.initialize_client()
 
