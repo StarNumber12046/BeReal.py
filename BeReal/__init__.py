@@ -1,6 +1,6 @@
 import requests
 import random
-from . import auth, profile
+from . import auth, profile, feed
 import json
 
 
@@ -25,8 +25,6 @@ class BeReal():
         res = auth.verify_code(self.otp_session, code)
         self.id_token = res["idToken"]
         self.refresh_token = res["refreshToken"]
-        
-        
         return 
     
     def initialize_client(self):
@@ -52,3 +50,7 @@ class BeReal():
     def me(self):
         me = profile.get_profile(self.id_token)
         return me
+    
+    def get_feed(self):
+        my_feed = feed.get_feed(self.id_token)
+        return my_feed

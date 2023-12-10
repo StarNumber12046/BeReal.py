@@ -6,4 +6,5 @@ from . import classes
 
 def get_profile(auth_token:str) -> classes.Me:
     res = requests.get(API_URL + "/person/me", headers={"Authorization": "Bearer " + auth_token})
-    return classes.Me(res.json())
+    friends_res = requests.get(API_URL + "/relationships/friends", headers={"Authorization": "Bearer " + auth_token})
+    return classes.Me(res.json(), friends_res.json()['data'])
