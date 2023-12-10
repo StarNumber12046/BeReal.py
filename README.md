@@ -16,6 +16,23 @@ pip install git+https://gitub.com/StarNumber12046/BeReal.py
 pip3 install git+https://gitub.com/StarNumber12046/BeReal.py
 ```
 
+## Features
+- Types
+- Semi-functioning eror handling
+
+## What I implemented
+- Current user profile
+- Feed
+- Friends enumeration
+- Friends profiles 
+- RealMojis
+- Comments
+
+## What is on the roadmap
+- Actual error handling
+- FriendsOfFriends feed (kinda hard tho)
+- Posting
+
 ## Special thanks
 Special thanks to macedonga with [beunblurred](https://github.com/macedonga/beunblurred) for having already done part of the reverse engineering
 
