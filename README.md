@@ -27,14 +27,11 @@ pip3 install git+https://gitub.com/StarNumber12046/BeReal.py
 - Friends profiles 
 - RealMojis
 - Comments
-- FriendsOfFriends feed (non complete)
+- FriendsOfFriends feed 
 
 ## What is on the roadmap
 - Actual error handling
 - Posting
-
-## A note on FoF
-Results may be incomplete, since pagination has not been implemented yet
 
 ## Special thanks
 Special thanks to macedonga with [beunblurred](https://github.com/macedonga/beunblurred) for having already done part of the reverse engineering

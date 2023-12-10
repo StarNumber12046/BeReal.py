@@ -41,11 +41,11 @@ for post in fof.posts:
     for mutual in post.user.mutuals:
         print("- %s" % mutual.username)
 
-    print("Post id:",p.id)
-    print("Primary image:",p.primary_image.url)
-    print("Secondary image:",p.secondary_image.url)
+    print("Post id:",post.id)
+    print("Primary image:",post.primary_image.url)
+    print("Secondary image:",post.secondary_image.url)
     print("REAL MOJIS")
-    for moji in p.real_mojis:
+    for moji in post.real_mojis:
         print(f"{moji.user.username} : {moji.emoji}")
 
     print("-----------------")
