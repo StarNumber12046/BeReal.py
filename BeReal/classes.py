@@ -93,7 +93,7 @@ class FOFRealMoji():
 
 class FOFPost():
     def __init__(self, raw):
-        
+        self.taken_at = convert_bereal_date(raw["postedAt"])
         self.id:str = raw["id"]
         self.user = Person(raw["user"])
         self.moment = Moment(raw["moment"])

@@ -19,7 +19,6 @@ def get_fof_feed(authorization: str):
         if res.status_code == 401:
             raise Exception("Invalid token. Has it expired?")
         next = resp.get("next")
-        print(next)
         data['data'].append(resp['data'])
     fixed_data = {"data": []}
     for item in data['data']:
@@ -28,6 +27,5 @@ def get_fof_feed(authorization: str):
         elif isinstance(item, list):
             for subitem in item:
                 fixed_data['data'].append(subitem)
-    # print(json.dumps(fixed_data['data']))
     return classes.FOFFeed(fixed_data)
     
