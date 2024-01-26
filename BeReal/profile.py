@@ -5,10 +5,16 @@ import requests
 from . import classes
 
 def get_profile(auth_token:str) -> classes.Me:
-    res = requests.get(API_URL + "/person/me", headers={"Authorization": "Bearer " + auth_token})
+    res = requests.get(API_URL + "/person/me", headers={"Authorization": "Bearer " + auth_token} | HEADERS)
     if res.status_code == 401:
         raise Exception("Invalid token. Has it expired?")
-    friends_res = requests.get(API_URL + "/relationships/friends", headers={"Authorization": "Bearer " + auth_token})
+    friends_res = requests.get(API_URL + "/relationships/friends", headers={"Authorization": "Bearer " + auth_token} | HEADERS)
     if res.status_code == 401:
         raise Exception("Invalid token. Has it expired?")
     return classes.Me(res.json(), friends_res.json()['data'])
+
+def search_profile(auth_token:str, query:str) -> list[classes.Person]:
+    res = requests.get(API_URL + f"/search/profile", headers={"Authorization": "Bearer " + auth_token} | HEADERS, params={"query": query})
+    if res.status_code == 401:
+        raise Exception("Invalid token. Has it expired?")
+    print(res.text)
