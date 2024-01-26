@@ -3,3 +3,4 @@
 build/
 **creds.json
 BeReal_dl/
+venv/

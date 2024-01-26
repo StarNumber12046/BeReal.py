@@ -58,3 +58,7 @@ class BeReal():
     def get_fof(self):
         fof_feed = fof.get_fof_feed(self.id_token)
         return fof_feed
+    
+    def search(self, query:str):
+        results = profile.search_profile(self.id_token, query)
+        return results
