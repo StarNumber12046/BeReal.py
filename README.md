@@ -1,8 +1,10 @@
-<h1 align="center">BeReal.py</h1>
+<h1 align="center">[BROKEN] BeReal.py</h1>
 <p align="center">A Python API wrapper for BeReal</p>
 
 > [!CAUTION]
 > This uses only reverse-engineered code. I am not to be held responsible for any consequences of the use of this library. Your account may be banned, you might get ratelimited, use this with caution.
+>
+> This library is currently in a broken state due to changes in the API. Please see https://github.com/rvaidun/befake/issues/199
 
 ## Installation
 > [!WARNING]
